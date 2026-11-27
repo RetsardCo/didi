@@ -1,0 +1,53 @@
+name: Windows CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Lint, Test & Build (Windows)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Frontend unit tests
+        run: npm run test:frontend
+
+      - name: Rust formatting check
+        run: npm run fmt:check
+
+      - name: Rust clippy lints
+        run: npm run lint:rust
+
+      - name: Rust test suite
+        run: npm run test:rust
+
+      - name: Frontend build
+        run: npm run build

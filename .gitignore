@@ -1,0 +1,70 @@
+# DiDi (Discord Ditto) — .gitignore
+
+# Rust / Cargo build outputs
+/target/
+/src-tauri/target/
+**/*.rs.bk
+*.pdb
+
+# Tauri generated artifacts
+/src-tauri/gen/
+/src-tauri/WixTools/
+*.msi
+*.nsis.zip
+*.exe
+
+# Node / Frontend build outputs
+node_modules/
+dist/
+build/
+.vite/
+.parcel-cache/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local secrets, credentials, and user configuration (never commit Application IDs or tokens)
+.env
+.env.*
+!.env.example
+config.json
+config.json.bak
+config.json.tmp
+config.json.corrupt.*
+*.local.json
+*.secret
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Proprietary Discord Social SDK artifacts (prohibited from MIT repository redistribution per D-012)
+discord_social_sdk/
+discord_partner_sdk.dll
+discord_partner_sdk.lib
+libdiscord_partner_sdk.so
+libdiscord_partner_sdk.dylib
+discordpp.h
+
+# Local diagnostics and logs
+logs/
+*.log
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary scratch files
+*.tmp
+tmp/
+temp/

@@ -1,0 +1,26 @@
+{
+  "name": "didi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "DiDi (Discord Ditto) — Lightweight Windows Discord Rich Presence utility",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test:frontend": "node --test tests/phase6b_remediation.test.ts tests/phase6c_pause_feedback.test.ts",
+    "tauri": "tauri",
+    "fmt:check": "cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check",
+    "lint:rust": "cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings",
+    "test:rust": "cargo test --manifest-path src-tauri/Cargo.toml",
+    "check": "npm run typecheck && npm run test:frontend && npm run fmt:check && npm run lint:rust && npm run test:rust"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.12.5"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.6",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  }
+}

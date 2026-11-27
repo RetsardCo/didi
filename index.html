@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiDi — Discord Ditto</title>
+    <link rel="icon" type="image/png" href="/didi-logo.png" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app-shell" class="app-shell layout-compact">
+      <header class="top-bar">
+        <div class="top-brand">
+          <div class="brand-line">
+            <img
+              src="/didi-logo.png"
+              alt="DiDi mascot logo"
+              class="brand-logo"
+              width="24"
+              height="24"
+            />
+            <h1 class="brand-title">DiDi</h1>
+            <span id="header-version" class="version-pill">v0.1.0</span>
+          </div>
+          <p id="header-active-profile" class="brand-sub">Loading active profile...</p>
+        </div>
+        <div class="top-controls">
+          <span
+            id="header-status-badge"
+            class="status-pill status-neutral"
+            role="status"
+            aria-live="polite"
+          >
+            ○ Starting
+          </span>
+          <button
+            id="header-toggle-btn"
+            type="button"
+            class="btn btn-secondary btn-sm"
+            disabled
+          >
+            Pause
+          </button>
+        </div>
+      </header>
+
+      <section id="global-notices" class="notice-stack" aria-label="System notices" hidden></section>
+
+      <nav class="primary-nav" role="tablist" aria-label="DiDi sections">
+        <button
+          id="tab-dashboard"
+          class="nav-tab is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-dashboard"
+          data-tab="dashboard"
+        >
+          Dashboard
+        </button>
+        <button
+          id="tab-profiles"
+          class="nav-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-profiles"
+          tabindex="-1"
+          data-tab="profiles"
+        >
+          Profiles
+        </button>
+        <button
+          id="tab-editor"
+          class="nav-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-editor"
+          tabindex="-1"
+          data-tab="editor"
+        >
+          Editor
+        </button>
+        <button
+          id="tab-preview"
+          class="nav-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-preview"
+          tabindex="-1"
+          data-tab="preview"
+        >
+          Preview
+        </button>
+        <button
+          id="tab-settings"
+          class="nav-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-settings"
+          tabindex="-1"
+          data-tab="settings"
+        >
+          Settings
+        </button>
+      </nav>
+
+      <main id="screen-viewport" class="screen-viewport">
+        <section
+          id="panel-dashboard"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-dashboard"
+        ></section>
+        <section
+          id="panel-profiles"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-profiles"
+          hidden
+        ></section>
+        <section
+          id="panel-editor-workspace"
+          class="editor-workspace"
+          hidden
+        >
+          <div
+            id="panel-editor"
+            class="tab-panel editor-pane"
+            role="tabpanel"
+            aria-labelledby="tab-editor"
+          ></div>
+          <aside
+            id="panel-editor-docked-preview"
+            class="docked-preview-pane"
+            aria-label="Docked live preview"
+            hidden
+          ></aside>
+        </section>
+        <section
+          id="panel-preview"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-preview"
+          hidden
+        ></section>
+        <section
+          id="panel-settings"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-settings"
+          hidden
+        ></section>
+      </main>
+
+      <div id="status-toast" class="status-toast" role="status" aria-live="polite" hidden></div>
+
+      <footer class="compliance-footer">
+        <span>Local-first Rich Presence utility • Not affiliated with Discord Inc.</span>
+      </footer>
+    </div>
+
+    <div
+      id="modal-backdrop"
+      class="modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      hidden
+    >
+      <div class="modal-dialog">
+        <h2 id="modal-title" class="modal-title"></h2>
+        <div id="modal-body" class="modal-body"></div>
+        <div id="modal-actions" class="modal-actions"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

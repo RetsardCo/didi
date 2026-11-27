@@ -1,0 +1,11 @@
+# Ensure binary assets are never subjected to CRLF/LF conversion
+*.pdf binary
+*.png binary
+*.ico binary
+*.icns binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.zip binary
+*.msi binary
+*.exe binary

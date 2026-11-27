@@ -1,0 +1,43 @@
+[package]
+name = "didi"
+version = "0.1.0"
+description = "DiDi (Discord Ditto) — Lightweight Windows utility for custom Discord Rich Presence"
+authors = ["DiDi Contributors"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.99.1"
+
+[lib]
+name = "didi_lib"
+crate-type = ["rlib"]
+
+[[bin]]
+name = "didi"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "=2.7.6", features = [] }
+
+[dependencies]
+async-trait = "0.1.92"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+tauri = { version = "=2.12.7", features = ["tray-icon"] }
+thiserror = "2.0.21"
+tokio = { version = "1.54.1", features = ["macros", "rt", "sync", "time", "net", "io-util"] }
+uuid = { version = "1.16", features = ["v4"] }
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-autostart = "=2.7.0"
+tauri-plugin-dialog = "=2.7.0"
+tauri-plugin-opener = "=2.7.2"
+tauri-plugin-single-instance = "=2.5.5"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
